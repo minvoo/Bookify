@@ -1,11 +1,16 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Carousel } from "./layouts/HomePage/Carousel";
+import { ExploreTopBooks } from "./layouts/HomePage/ExploreTopBooks";
+import { Navbar } from "./layouts/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome to full stack app ;)</h1>
-    </div>
+    <>
+      <Navbar />
+      <ExploreTopBooks />
+      <Carousel />
+    </>
   );
 }
 
