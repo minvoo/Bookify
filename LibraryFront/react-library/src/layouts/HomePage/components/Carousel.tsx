@@ -1,6 +1,7 @@
 import { ReturnBook } from "./ReturnBook";
 import { useState, useEffect } from "react";
 import BookModel from "../../../models/BookModel";
+import { SpinnerLoading } from "../../Utils/SpinnerLoading";
 
 export const Carousel = () => {
 
@@ -48,6 +49,12 @@ export const Carousel = () => {
           setHttpError(error.message);
         })
     }, []);
+
+    if (isLoading) {
+      return (
+        <SpinnerLoading />
+      );
+    }
 
     return (
       <div className="container mt-5" style={{ height: 550 }}>
@@ -97,7 +104,9 @@ export const Carousel = () => {
           {/* Mobile */}
           <div className="d-lg-none mt-3">
             <div className="row d-flex justify-content-center align-items-center">
-               <ReturnBook book={books[7]} key={books[7].id} />
+            {books.slice(6,7).map(book => (
+                  <ReturnBook book={book} key={book.id} />
+                ))}
             </div>
           </div>
           <div className="homepage-carousel-title mt-3">
