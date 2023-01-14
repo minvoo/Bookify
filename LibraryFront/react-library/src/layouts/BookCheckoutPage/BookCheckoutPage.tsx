@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BookModel from "../../models/BookModel";
 import { SpinnerLoading } from "../Utils/SpinnerLoading";
 import { StarsReview } from "../Utils/StarReview";
+import { CheckoutAndReviewBox } from "./CheckoutAndReviewBox";
 
 export const BookCheckoutPage = () => {
   const [book, setBook] = useState<BookModel>();
@@ -75,9 +76,10 @@ export const BookCheckoutPage = () => {
               <h2>{book?.title}</h2>
               <h5 className="text-primary">{book?.author}</h5>
               <p className="lead">{book?.description}</p>
-              <StarsReview rating={4} size={32} />
+              <StarsReview rating={2.5} size={32} />
             </div>
           </div>
+              <CheckoutAndReviewBox book={book} mobile={false}/>
         </div>
         <hr />
       </div>
@@ -94,15 +96,17 @@ export const BookCheckoutPage = () => {
           )}
         </div>
         <div className="mt-4">
-            <div className="ml-2">
-                <h2>{book?.title}</h2>
-                <h5 className="text-primary">{book?.author}</h5>
-                <p className="lead">{book?.description}</p>
-            </div>
+          <div className="ml-2">
+            <h2>{book?.title}</h2>
+            <h5 className="text-primary">{book?.author}</h5>
+            <p className="lead">{book?.description}</p>
+            <StarsReview rating={2.5} size={32} />
+            <CheckoutAndReviewBox book={book} mobile={true}/>
+            
+          </div>
         </div>
-        <hr/>
+        <hr />
       </div>
-
     </div>
   );
 };
