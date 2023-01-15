@@ -20,8 +20,7 @@ class BookModel {
             this.copiesAvailable = copiesAvailable;
             this.category = category;
             this.img = img;
-        }
-        
+        }       
 }
 
 export default BookModel;
