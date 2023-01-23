@@ -95,7 +95,7 @@ export const Loans: React.FC<{}> = (props) => {
                         {shelfCurrentLoan.daysLeft === 0 && (
                           <p className="text-success">Due today </p>
                         )}
-                        {shelfCurrentLoan.daysLeft > 0 && (
+                        {shelfCurrentLoan.daysLeft < 0 && (
                           <p className="text-danger">
                             Past due by {shelfCurrentLoan.daysLeft} days.
                           </p>
