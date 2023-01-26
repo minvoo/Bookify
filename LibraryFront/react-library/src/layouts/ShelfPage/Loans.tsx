@@ -15,7 +15,7 @@ export const Loans: React.FC<{}> = (props) => {
   >([]);
   const [isLoadingUserLoans, setIsLoadingUserLoans] = useState(true);
   const [checkout, setCheckout] = useState(false);
-
+  const [isRenewed, setIsRenewed] = useState(false);
   useEffect(() => {
     const fetchUserCurrentLoans = async () => {
       if (authState && authState.isAuthenticated) {
@@ -45,7 +45,7 @@ export const Loans: React.FC<{}> = (props) => {
       setHttpError(error.message);
     });
     window.scrollTo(0, 0);
-  }, [authState, checkout]);
+  }, [authState, checkout, isRenewed]);
 
   if (isLoadingUserLoans) {
     <SpinnerLoading />;
@@ -72,6 +72,22 @@ export const Loans: React.FC<{}> = (props) => {
       throw new Error("Something went wrong");
     }
     setCheckout(!checkout);
+  }
+
+  async function renewLoan(bookId:number) {
+    const url = `http://localhost:8080/api/books/secure/renew/?bookId=${bookId}`;
+    const requestOptions = {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
+        "Content-Type": "application/json",
+      },
+    };
+    const returnResponse = await fetch(url, requestOptions);
+    if (!returnResponse.ok) {
+      throw new Error("Something went wrong");
+    }
+    setIsRenewed(true);
   }
 
   return (
@@ -153,6 +169,7 @@ export const Loans: React.FC<{}> = (props) => {
                   shelfCurrentLoan={shelfCurrentLoan}
                   mobile={false}
                   returnBook={returnBook}
+                  renewBook={renewLoan}
                 />
               </div>
             ))}
@@ -239,7 +256,8 @@ export const Loans: React.FC<{}> = (props) => {
                   </div>
                 </div>
                 <hr />
-                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={true} returnBook={returnBook} />
+                <LoansModal shelfCurrentLoan={shelfCurrentLoan} mobile={true} returnBook={returnBook} 
+                renewBook={renewLoan}/>
               </div>
             ))}
           </>
