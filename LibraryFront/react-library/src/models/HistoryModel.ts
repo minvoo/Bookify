@@ -1,5 +1,4 @@
 class HistoryModel {
-
     id: number;
     userEmail: string;
     checkoutDate: string;
@@ -9,8 +8,8 @@ class HistoryModel {
     description: string;
     img: string;
 
-    constructor(id:number, userEmail:string, checkoutDate:string, returnedDate:string, title:string, author:string,
-        description:string, img:string) {
+    constructor(id: number, userEmail: string, checkoutDate: string, returnedDate: string, 
+        title: string, author: string, description: string, img: string) {
             this.id = id;
             this.userEmail = userEmail;
             this.checkoutDate = checkoutDate;
@@ -21,4 +20,5 @@ class HistoryModel {
             this.img = img;
         }
 }
+
 export default HistoryModel;
