@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Messages } from "./components/Messages";
 import { PostNewMessage } from "./components/PostNewMessage";
 
 export const MessagesPage : React.FC<{}> = (props) => {
@@ -29,7 +30,8 @@ export const MessagesPage : React.FC<{}> = (props) => {
                 </div>
                 <div className="tab-pane fade" id='nav-message' role='tabpanel'
                 aria-labelledby='nav-message-tab'>
-                    {messagesClick ? <p>Messages:</p> : <></>}
+                    {messagesClick ? <><p>Messages</p>
+                    <Messages /> </>: <></>}
                 </div>
             </div>
         </div>
