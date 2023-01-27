@@ -1,5 +1,6 @@
 import { useOktaAuth } from "@okta/okta-react";
 import { Link } from 'react-router-dom';
+import { MessagesPage } from "../../MessagesPage/MessagesPage";
 
 export const LibraryServices = () => {
 
@@ -20,8 +21,8 @@ export const LibraryServices = () => {
                     <div className="d-grid gap-2 justify-content-md-start mb-4 mb-lg-3">
                        {authState?.isAuthenticated ?
                         
-                        <Link to="/search" type='button' className='btn main-color btn-lg text-white'>
-                            Library services
+                        <Link to="/messages" type='button' className='btn main-color btn-lg text-white'>
+                            Library Services
                         </Link>
                         :
                         <Link to="/login" type='button' className='btn main-color btn-lg text-white'>
