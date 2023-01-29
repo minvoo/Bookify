@@ -50,8 +50,12 @@ export const Navbar = () => {
               Shelf
             </NavLink>
           </li>}
+          {authState.isAuthenticated && authState.accessToken?.claims.userType === 'admin' &&
+            <li className='nav-item'>
+              <NavLink to="/admin" className='nav-link'>Admin</NavLink></li>}
           </ul>
           <ul className="navbar-nav ms-auto">
+           
             {!authState.isAuthenticated ? 
             
             <li className="nav-item m-1">
